@@ -1,0 +1,18 @@
+__pycache__/
+*.py[cod]
+.venv/ venv/ env/
+.DS_Store
+.ipynb_checkpoints/
+.vscode/
+data/raw/
+data/processed/
+!data/processed/.keep
+__pycache__/
+*.py[cod]
+.venv/ venv/ env/
+.DS_Store
+.ipynb_checkpoints/
+.vscode/
+data/raw/
+data/processed/
+!data/processed/.keep
