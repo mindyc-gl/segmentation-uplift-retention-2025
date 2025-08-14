@@ -21,7 +21,7 @@
 - Amount: 10,682 unique
 - Outcome: 1 unique value (this is suspicious — might not be useful unless it has meaningful distribution in context)
 
-Stage 3 – User Activity & Funnel Analysis
+Stage 4 – User Activity & Funnel Analysis
 Funnel Analysis
 
 Steps Analyzed: page_view → product_view → add_to_cart → purchase
