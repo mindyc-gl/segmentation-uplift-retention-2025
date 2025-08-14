@@ -1,67 +1,120 @@
-1. Data overview
-- Rows: 74,817
-- Columns: 7
-- UserID, SessionID, Timestamp, EventType, ProductID, Amount, Outcome
+# E-Commerce User Behavior Analysis
 
- Data types:
- UserID (int), SessionID (int), Timestamp (object → should be converted to datetime),  EventType (object), ProductID (object), Amount (float), Outcome (object)
+## 1. Project Overview
 
-2. Missing values
-- ProductID: 42,704 missing
-- Amount: 64,135 missing
-- Outcome: 64,135 missing
-- The other columns have 0 missing values.
+This project analyzes user behavior for an e-commerce platform using Python for data processing  and Tableau for visualization. 
+The analysis focuses on:
 
-3. Uniqueness
-- UserID: 1,000 unique
-- SessionID: 10 unique
-- Timestamp: almost all unique (likely each event has its own time)
-- EventType: 7 unique
-- ProductID: 8,747 unique
-- Amount: 10,682 unique
-- Outcome: 1 unique value (this is suspicious — might not be useful unless it has meaningful distribution in context)
+📈 User activity trends (DAU, WAU, MAU)
 
-Stage 4 – User Activity & Funnel Analysis
+🔄 Funnel conversion analysis
+
+📊 Retention rate tracking
+
+💡 Business insights based on user engagement patterns
+Note: The dataset is synthetic test data with evenly distributed events, meaning results are idealized 
+compared to real-world scenarios.
+
+
+## 2. Dataset
+
+- Format: CSV (synthetic data)
+- Main columns: user_id, event, timestamp
+- Event types:
+    1. page_view
+    2. product_view
+    3. add_to_cart
+    4. purchase
+
+
+## 3. Analysis Stages
+
+
+### Stage 1 – Data Loading & Cleaning
+- Loaded dataset using Pandas
+- Converted timestamps to datetime format
+- Checked for missing values and duplicates
+- Verified column data types
+
+### Stage 2 – Data Exploration
+- Checked dataset size and structure
+- Identified unique event types and time range
+- Counted unique users per event type
+
+### Stage 3 – Aggregated Metrics
+Calculated:
+- Daily Active Users (DAU)
+- Weekly Active Users (WAU)
+- Monthly Active Users (MAU)
+
+### Stage 4 – Funnel & User Activity Analysis
 Funnel Analysis
+**Steps Analyzed**: `page_view → product_view → add_to_cart → purchase`
 
-Steps Analyzed: page_view → product_view → add_to_cart → purchase
+| Step          | Unique Users | Conversion Rate |
+|---------------|--------------|-----------------|
+| page_view     | 1000         | 100%            |
+| product_view  | 1000         | 100%            |
+| add_to_cart   | 1000         | 100%            |
+| purchase      | 1000         | 100%            |
 
-Result:
+**Interpretation**:  
+- All steps have identical user counts and conversion rates (100%).  
+- This suggests the dataset is synthetic or uniformly distributed.  
+- In real-world data, we would expect drop-offs at each stage.
 
-Step	Unique Users	Conversion Rate
-page_view	1000	100%
-product_view	1000	100%
-add_to_cart	1000	100%
-purchase	1000	100%
+**User Activity Trends**:
+- DAU: ~300 users/day, stable with minor fluctuations.
+- WAU: ~910–940 users/week, consistent week-to-week.
+- MAU: 1000 users/month (all users active monthly).
 
-Interpretation:
-All steps have identical user counts and conversion rates (100%).
-This indicates that every user in the dataset performed all four actions.
-This is unusual in real-world data and suggests your current dataset is test or synthetic data with uniform distribution.
-In a real dataset, we would expect a drop at each stage as some users don’t progress to the next step.
+### Stage 5 – Retention Analysis
 
-Daily, Weekly, Monthly Active Users
+**First 30-Day Retention Rate Table**:
+- Calculated daily retention rates for first 30 days after each user's first activity.
+- Exported results to CSV (retention_rate_first_30_days.csv).
 
-Daily Active Users (DAU):
+**Key Observations**:
+- Retention rates gradually declined over time.
+- Day 1 retention close to 100% due to synthetic data consistency.
+- Real-world data would typically show sharper drops.
 
-Average ~300 users per day.
+**Summary Retention Table**:
+- Calculated overall retention rates across different periods.
+- Saved to retention_summary_table.csv.
 
-Peak ~340 users, lowest ~175 users (likely incomplete data at the end of the dataset).
+### Stage 6 – Data Export
+Exported files:
+- retention_summary_table.csv – Summary retention metrics
+- retention_rate_first_30_days.csv – Detailed daily retention rates
 
-Relatively stable over time with slight fluctuations.
+### Stage 7 – Visualization
+**Python Charts**:
 
-Weekly Active Users (WAU):
+📊 Funnel Chart (Matplotlib)
 
-Around ~910–940 users per week.
+📈 DAU Trend Line Chart
 
-Very consistent week-to-week, no strong upward or downward trend.
+🔥 Retention Heatmap
 
-Monthly Active Users (MAU):
+**Tableau Dashboard**:
+- Funnel visualization
+- DAU/WAU/MAU trend
+- Retention heatmap
+- Filterable interactive dashboard
 
-Always 1000 users, meaning all users were active in each month (again indicating synthetic dataset).
+(View Tableau Dashboard link to be added once published)
 
-DAU Trend Visualization
+## 4. Business Insights
+Even though the dataset is synthetic, this workflow demonstrates:
+1. Conversion Tracking – Funnel analysis helps identify drop-off points in user journeys.
+2. User Engagement Trends – DAU/WAU/MAU trends reveal engagement stability or growth.
+3. Retention Optimization – Retention data helps target re-engagement campaigns.
+4. Scalability – Same process can be applied to real-world datasets for actionable insights.
 
-Shows a stable pattern of daily usage without significant growth or decline.
+📂 Files in This Repo
+ecommerce_analysis.py – Main Python analysis script
+retention_summary_table.csv – Summary retention metrics
+retention_rate_first_30_days.csv – Detailed daily retention rates
+(Tableau dashboard link to be added)
 
-A sharp drop at the very end likely due to incomplete last-day data.
