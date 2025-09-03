@@ -1,4 +1,4 @@
-E-Commerce Customer Segmentation & Retention Analysis
+*E-Commerce Customer Segmentation & Retention Analysis*
 1. Project Overview
 
 This project analyzes customer behavior on an e-commerce platform using Python for data processing and Tableau for visualization. The focus is on RFM segmentation, customer retention, and revenue contribution to uncover loyalty patterns and churn risks.
