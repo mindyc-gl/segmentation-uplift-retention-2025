@@ -1,120 +1,76 @@
-# E-Commerce User Behavior Analysis
+E-Commerce Customer Segmentation & Retention Analysis
+1. Project Overview
 
-## 1. Project Overview
+This project analyzes customer behavior on an e-commerce platform using Python for data processing and Tableau for visualization. The focus is on RFM segmentation, customer retention, and revenue contribution to uncover loyalty patterns and churn risks.
 
-This project analyzes user behavior for an e-commerce platform using Python for data processing  and Tableau for visualization. 
-The analysis focuses on:
+Key Objectives
 
-📈 User activity trends (DAU, WAU, MAU)
+📊 Segment users with RFM (Recency, Frequency, Monetary) analysis
 
-🔄 Funnel conversion analysis
+🔄 Track customer retention trends over time
 
-📊 Retention rate tracking
+💰 Measure revenue contribution by customer segment
 
-💡 Business insights based on user engagement patterns
-Note: The dataset is synthetic test data with evenly distributed events, meaning results are idealized 
-compared to real-world scenarios.
+💡 Generate actionable insights for customer engagement strategy
 
+2. Dataset
 
-## 2. Dataset
+Format: CSV (synthetic test data)
 
-- Format: CSV (synthetic data)
-- Main columns: user_id, event, timestamp
-- Event types:
-    1. page_view
-    2. product_view
-    3. add_to_cart
-    4. purchase
+Main Columns: user_id, event, timestamp
 
+Event Types: page_view, product_view, add_to_cart, purchase
 
-## 3. Analysis Stages
+⚠️ Note: Dataset is synthetic with evenly distributed events, so results are idealized compared to real-world scenarios.
 
+3. Analysis Stages
 
-### Stage 1 – Data Loading & Cleaning
-- Loaded dataset using Pandas
-- Converted timestamps to datetime format
-- Checked for missing values and duplicates
-- Verified column data types
+Stage 1 – Data Preparation
 
-### Stage 2 – Data Exploration
-- Checked dataset size and structure
-- Identified unique event types and time range
-- Counted unique users per event type
+Loaded dataset with Pandas
 
-### Stage 3 – Aggregated Metrics
-Calculated:
-- Daily Active Users (DAU)
-- Weekly Active Users (WAU)
-- Monthly Active Users (MAU)
+Converted timestamps to datetime
 
-### Stage 4 – Funnel & User Activity Analysis
-Funnel Analysis
-**Steps Analyzed**: `page_view → product_view → add_to_cart → purchase`
+Removed duplicates & checked data types
 
-| Step          | Unique Users | Conversion Rate |
-|---------------|--------------|-----------------|
-| page_view     | 1000         | 100%            |
-| product_view  | 1000         | 100%            |
-| add_to_cart   | 1000         | 100%            |
-| purchase      | 1000         | 100%            |
+Stage 2 – RFM Segmentation
 
-**Interpretation**:  
-- All steps have identical user counts and conversion rates (100%).  
-- This suggests the dataset is synthetic or uniformly distributed.  
-- In real-world data, we would expect drop-offs at each stage.
+Calculated Recency, Frequency, and Monetary scores
 
-**User Activity Trends**:
-- DAU: ~300 users/day, stable with minor fluctuations.
-- WAU: ~910–940 users/week, consistent week-to-week.
-- MAU: 1000 users/month (all users active monthly).
+Assigned users into segments (e.g., Loyal Customers, Potential Loyalists, VIP, At Risk, Lost Customers)
 
-### Stage 5 – Retention Analysis
+Stage 3 – Retention Analysis
 
-**First 30-Day Retention Rate Table**:
-- Calculated daily retention rates for first 30 days after each user's first activity.
-- Exported results to CSV (retention_rate_first_30_days.csv).
+Calculated retention rates by cohort
 
-**Key Observations**:
-- Retention rates gradually declined over time.
-- Day 1 retention close to 100% due to synthetic data consistency.
-- Real-world data would typically show sharper drops.
+Built retention curves to track segment-level user loyalty over time
 
-**Summary Retention Table**:
-- Calculated overall retention rates across different periods.
-- Saved to retention_summary_table.csv.
+Stage 4 – Revenue Analysis
 
-### Stage 6 – Data Export
-Exported files:
-- retention_summary_table.csv – Summary retention metrics
-- retention_rate_first_30_days.csv – Detailed daily retention rates
+Measured revenue contribution by RFM segment
 
-### Stage 7 – Visualization
-**Python Charts**:
+Identified high-value groups vs. churn-risk groups
 
-📊 Funnel Chart (Matplotlib)
+Stage 5 – Visualization (Tableau)
 
-📈 DAU Trend Line Chart
+RFM Bubble Chart → Customer Segmentation
 
-🔥 Retention Heatmap
+Retention Curve → Retention trends by segment
 
-**Tableau Dashboard**:
-- Funnel visualization
-- DAU/WAU/MAU trend
-- Retention heatmap
-- Filterable interactive dashboard
+Revenue Contribution → Which groups drive the most revenue
+
+Segment Movement → How customers shift between segments over time
 
 View Tableau Dashboard link https://public.tableau.com/app/profile/mindy.chen3731/viz/CustomerSegmentationRetentionDashboard/Story1 
 
-## 4. Business Insights
-Even though the dataset is synthetic, this workflow demonstrates:
-1. Conversion Tracking – Funnel analysis helps identify drop-off points in user journeys.
-2. User Engagement Trends – DAU/WAU/MAU trends reveal engagement stability or growth.
-3. Retention Optimization – Retention data helps target re-engagement campaigns.
-4. Scalability – Same process can be applied to real-world datasets for actionable insights.
+4. Business Insights
+- Loyal Customers drive the majority of revenue (67.3%) and show strong retention.
+- Potential Loyalists are the main growth opportunity, with room to convert into VIPs.
+- VIP Customers have the highest per-user spend but need strategies to maintain engagement.
+- At Risk & Lost Customers highlight churn risks requiring reactivation efforts.
 
-📂 Files in This Repo
-ecommerce_analysis.py – Main Python analysis script
-retention_summary_table.csv – Summary retention metrics
-retention_rate_first_30_days.csv – Detailed daily retention rates
-(Tableau dashboard link to be added)
-
+5. Files in This Repo
+ecommerce_analysis.py → Python data processing & RFM calculation
+retention_summary_table.csv → Summary of retention metrics
+customer_rfm_segments.csv → Exported RFM segmentation results
+Tableau Dashboard link (interactive visualization)
