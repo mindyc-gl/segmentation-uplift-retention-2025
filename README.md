@@ -103,7 +103,7 @@ Exported files:
 - Retention heatmap
 - Filterable interactive dashboard
 
-(View Tableau Dashboard link to be added once published)
+View Tableau Dashboard link https://public.tableau.com/app/profile/mindy.chen3731/viz/CustomerSegmentationRetentionDashboard/Story1 
 
 ## 4. Business Insights
 Even though the dataset is synthetic, this workflow demonstrates:
